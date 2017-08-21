@@ -1,0 +1,28 @@
+{
+  "name": "fis3-server-browsersync",
+  "version": "1.0.0",
+  "description": "a browser sync server for fis3.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fisker/fis3-server-browsersync.git"
+  },
+  "keywords": [
+    "server",
+    "browsersync",
+    "browser-sync",
+    "livereload",
+    "fis3-server-browsersync",
+    "fis",
+    "fis3"
+  ],
+  "author": "fisker Cheung <lionkay@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.18.13"
+  },
+  "bugs": {
+    "url": "https://github.com/fisker/fis3-server-browsersync/issues"
+  },
+  "readmeFilename": "README.md"
+}
