@@ -1,6 +1,6 @@
 {
   "name": "fis3-server-browsersync",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a browser sync server for fis3.",
   "main": "index.js",
   "repository": {

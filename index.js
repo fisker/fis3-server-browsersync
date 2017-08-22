@@ -54,6 +54,15 @@ exports.start = function(opt, callback) {
     script
   ];
 
+  if (opt['bs-config']) {
+    var bsConfig = path.join(process.cwd(), opt['bs-config']);
+    if (fis.util.exists(bsConfig)) {
+      opt['bs-config'] = bsConfig;
+    } else {
+      delete opt['bs-config'];
+    }
+  }
+
   // 把 options 通过 args 传给 app 程序。
   fis.util.map(opt, function(key, value) {
     args.push('--' + key, String(value));
