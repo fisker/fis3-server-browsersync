@@ -8,7 +8,7 @@ var DOCUMENT_ROOT = path.resolve(
 );
 var bsConfigFile = /\-\-bs\-config\|(.*?)(?:\||$)/.test(args) ? RegExp.$1 : '';
 var bs = require('browser-sync').create();
-var chokidar = require('chokidar');
+// var chokidar = require('chokidar');
 var bsUtils = bs.instance.utils;
 var bsDefaultConfig = require('./node_modules/browser-sync/lib/default-config.js');
 
@@ -81,13 +81,14 @@ function startServer() {
   });
 
   bs.watch(
-    path.join(DOCUMENT_ROOT, '**/*'),
-    {
-      ignored: path.join(DOCUMENT_ROOT, '**/*.log')
-    },
-    function(event, path) {
-      console.log(new Date().toJSON() + ' ' + event + ': ' + path);
-      bs.reload(path);
+    DOCUMENT_ROOT,
+    function(event, f) {
+      var relativePath = path.relative(DOCUMENT_ROOT, f);
+      if (relativePath === 'server.log' || /(^|[\/\\])[\._]./.test(relativePath)) {
+        return;
+      }
+      console.log(new Date().toJSON() + ' ' + event + ': ' + f);
+      bs.reload(f);
     }
   );
 }
