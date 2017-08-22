@@ -36,7 +36,7 @@ if (fs.existsSync(userConfigFile)) {
 }
 
 function getConfig() {
-  return Object.assign(
+  var config = Object.assign(
     {},
     bsDefaultConfig,
     {
@@ -58,16 +58,16 @@ function getConfig() {
         directory: true
       },
       port: port,
-      https: https
-        ? {
-            key: 'key.pem',
-            cert: 'cert.pem'
-          }
-        : false,
       open: false
     }
   );
+
+  if (!https) {
+    config.https = false;
+  }
+  return config;
 }
+
 
 function startServer() {
   var bsConfig = getConfig();
