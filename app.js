@@ -82,13 +82,13 @@ function startServer() {
 
   bs.watch(
     DOCUMENT_ROOT,
-    function(event, f) {
-      var relativePath = path.relative(DOCUMENT_ROOT, f);
+    function(event, file) {
+      var relativePath = path.relative(DOCUMENT_ROOT, file);
       if (relativePath === 'server.log' || /(^|[\/\\])[\._]./.test(relativePath)) {
         return;
       }
-      console.log(new Date().toJSON() + ' ' + event + ': ' + f);
-      bs.reload(f);
+      console.log(new Date().toJSON() + ' ' + event + ': ' + relativePath);
+      bs.reload(file);
     }
   );
 }
