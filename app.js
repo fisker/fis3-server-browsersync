@@ -59,7 +59,15 @@ function getConfig() {
         directory: true
       },
       port: port,
-      open: false
+      open: false,
+      snippetOptions: {
+        rule: {
+          match: /<\/body>/i,
+          fn: function (snippet, match) {
+            return snippet + match;
+          }
+        }
+      }
     }
   );
 
