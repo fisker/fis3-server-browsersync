@@ -3,6 +3,7 @@ var fs = require('fs');
 var args = process.argv.join('|');
 var port = /\-\-port\|(\d+)(?:\||$)/.test(args) ? ~~RegExp.$1 : 8080;
 var https = /\-\-https\|(true)(?:\||$)/.test(args) ? !!RegExp.$1 : false;
+var context = /\-\-context\|(.*?)(?:\||$)/.test(args) ? RegExp.$1 : '';
 var DOCUMENT_ROOT = path.resolve(
   /\-\-root\|(.*?)(?:\||$)/.test(args) ? RegExp.$1 : process.cwd()
 );
@@ -15,18 +16,14 @@ var bsDefaultConfig = require(path.join(path.dirname(require.resolve('browser-sy
 
 function getUserConfig(path) {
   try {
-    var userConfig = require(path);
-    if (bsUtils.verifyConfig(userConfig)) {
-      return userConfig;
-    }
+      return require(path);
   } catch (_) {}
 }
 
 var userConfigFile = path.resolve(
-  process.cwd(),
+  context,
   bsConfigFile || bs.instance.config.userFile
 );
-
 
 if (fs.existsSync(userConfigFile)) {
   // TODO:  watch bs-config.js
@@ -52,7 +49,7 @@ function getConfig() {
       reloadDebounce: 500,
       notify: false,
     },
-    getUserConfig(),
+    getUserConfig(userConfigFile),
     {
       server: {
         baseDir: DOCUMENT_ROOT,

@@ -63,6 +63,8 @@ exports.start = function(opt, callback) {
     }
   }
 
+  opt.context = process.cwd();
+
   // 把 options 通过 args 传给 app 程序。
   fis.util.map(opt, function(key, value) {
     args.push('--' + key, String(value));
