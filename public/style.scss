@@ -1,13 +1,20 @@
+$color-border: #eaecef;
+$color-base: #24292e;
+$color-muted: #6a737d;
+$color-hover: #f6f8fa;
+$color-link-hover: #0366d6;
+$color-striped: #f2f2f2;
+
 body {
   background: #fff;
-  color: #24292e;
+  color: $color-base;
   line-height: 1.5;
 }
 
 hr {
   height: 0;
   border: 0;
-  border-bottom: 1px solid #eaecef;
+  border-bottom: 1px solid $color-border;
 }
 
 a {
@@ -16,63 +23,71 @@ a {
       touch-action: manipulation;
 }
 
+h1 {
+  a {
+    color: $color-base;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 ul {
   list-style: none;
   padding-left: 0;
   margin-left: 0;
-  border: 1px solid #eaecef;
+  border: 1px solid $color-border;
   font-size: 14px;
 }
 
-li {}
+li {
+  &:nth-child(odd) {
+    background: $color-striped;
+  }
 
-li:nth-child(odd) {
-  background: #f2f2f2;
+  &:hover {
+    background: $color-hover;
+  }
+
+  & + & {
+    border-top: 1px solid $color-border;
+  }
+
+  a {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    padding: 5px 0;
+
+    &:hover .name {
+      text-decoration: underline;
+      color: $color-link-hover;
+    }
+  }
 }
 
-
-li:hover {
-  background: #f6f8fa;
-}
-
-li + li {
-  border-top: 1px solid #eaecef;
-}
 
 .icon .name {
   background-repeat: no-repeat;
   background-position: 5px 3px;
-}
-
-.icon .name {
   padding-left: 26px;
 }
 
-li a {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-  padding: 5px 0;
-}
-
-h1 a {
-  color: #24292e;
-  padding: 5px;
-}
 
 .name,
 .size,
 .date {
   display: table-cell;
   padding: 0 5px;
-  color: #24292e;
+  color: $color-base;
 }
 
 .size,
 .date {
   text-align: right;
   white-space: nowrap;
-  color: #6a737d;
+  color: $color-muted;
 }
 
 .size {
@@ -82,11 +97,6 @@ h1 a {
 .date {
   width: 150px;
   text-align: right;
-}
-
-li a:hover .name {
-  text-decoration: underline;
-  color: #0366d6;
 }
 
 @media (max-width: 768px) {

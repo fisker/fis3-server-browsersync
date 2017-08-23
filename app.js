@@ -11,7 +11,7 @@ var serveIndex = require('serve-index');
 var bs = require('browser-sync').create();
 // var chokidar = require('chokidar');
 var bsUtils = bs.instance.utils;
-var bsDefaultConfig = require('./node_modules/browser-sync/lib/default-config.js');
+var bsDefaultConfig = require(path.join(path.dirname(require.resolve('browser-sync')),'./lib/default-config.js'));
 
 function getUserConfig(path) {
   try {
