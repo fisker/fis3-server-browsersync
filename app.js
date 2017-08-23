@@ -78,8 +78,8 @@ function getConfig() {
       route: '',
       handle: serveIndex(DOCUMENT_ROOT, {
         icons: true,
-        // stylesheet: 'public/style.css',
-        // template: 'public/directory.html'
+        stylesheet: 'public/style.css',
+        template: 'public/directory.html'
       }),
       id: 'Browsersync Server Directory Middleware'
     });
