@@ -10,7 +10,6 @@ var DOCUMENT_ROOT = path.resolve(
 var bsConfigFile = /\-\-bs\-config\|(.*?)(?:\||$)/.test(args) ? RegExp.$1 : '';
 var serveIndex = require('serve-index');
 var bs = require('browser-sync').create();
-// var chokidar = require('chokidar');
 var bsUtils = bs.instance.utils;
 var bsDefaultConfig = require(path.join(path.dirname(require.resolve('browser-sync')),'./lib/default-config.js'));
 
@@ -24,14 +23,6 @@ var userConfigFile = path.resolve(
   context,
   bsConfigFile || bs.instance.config.userFile
 );
-
-if (fs.existsSync(userConfigFile)) {
-  // TODO:  watch bs-config.js
-  // var watcher = chokidar.watch(userConfigFile);
-  // watcher.on('change', startServer);
-  // watcher.on('unlink', startServer);
-  // watcher.on('add', startServer);
-}
 
 function getConfig() {
   var config = Object.assign(
