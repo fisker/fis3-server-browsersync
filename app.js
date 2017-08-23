@@ -112,11 +112,16 @@ function startServer() {
     DOCUMENT_ROOT,
     function(event, file) {
       var relativePath = path.relative(DOCUMENT_ROOT, file);
-      if (relativePath === 'server.log' || /(^|[\/\\])[\._]./.test(relativePath)) {
+      if (!relativePath || relativePath === 'server.log' || /(^|[\/\\])[\._]./.test(relativePath)) {
         return;
       }
-      console.log(new Date().toJSON() + ' ' + event + ': ' + relativePath);
       bs.reload(file);
+      console.log(
+        '%s %s: %s',
+        new Date().toJSON(),
+        ('         ' + event).slice(-9),
+        relativePath
+      );
     }
   );
 }
