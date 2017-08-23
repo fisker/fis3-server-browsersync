@@ -7,6 +7,7 @@ var DOCUMENT_ROOT = path.resolve(
   /\-\-root\|(.*?)(?:\||$)/.test(args) ? RegExp.$1 : process.cwd()
 );
 var bsConfigFile = /\-\-bs\-config\|(.*?)(?:\||$)/.test(args) ? RegExp.$1 : '';
+var serveIndex = require('serve-index');
 var bs = require('browser-sync').create();
 // var chokidar = require('chokidar');
 var bsUtils = bs.instance.utils;
@@ -65,6 +66,25 @@ function getConfig() {
   if (!https) {
     config.https = false;
   }
+
+  if (typeof config.middleware !== 'array') {
+    if (typeof config.middleware === 'function') {
+      config.middleware = [config.middleware];
+    } else {
+      config.middleware = [];
+    }
+
+    config.middleware.push({
+      route: '',
+      handle: serveIndex(DOCUMENT_ROOT, {
+        icons: true,
+        // stylesheet: 'public/style.css',
+        // template: 'public/directory.html'
+      }),
+      id: 'Browsersync Server Directory Middleware'
+    });
+  }
+
   return config;
 }
 

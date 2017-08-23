@@ -19,7 +19,8 @@
   "author": "fisker Cheung <lionkay@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "browser-sync": "^2.18.13"
+    "browser-sync": "^2.18.13",
+    "serve-index": "^1.9.0"
   },
   "bugs": {
     "url": "https://github.com/fisker/fis3-server-browsersync/issues"
