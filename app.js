@@ -24,6 +24,16 @@ var userConfigFile = path.resolve(
   bsConfigFile || bs.instance.config.userFile
 );
 
+var serveIndexMiddleWare = {
+  route: '',
+  handle: serveIndex(DOCUMENT_ROOT, {
+    icons: true,
+    stylesheet: 'public/style.css',
+    template: 'public/directory.html'
+  }),
+  id: 'Browsersync Server Directory Middleware'
+};
+
 function getConfig() {
   var config = Object.assign(
     {},
@@ -63,23 +73,17 @@ function getConfig() {
     config.https = false;
   }
 
-  if (typeof config.middleware !== 'array') {
-    if (typeof config.middleware === 'function') {
+  var type = Object.prototype.toString.call(config.middleware).slice(8, -1);
+
+  if (type !== 'Array') {
+    if (type === 'Function') {
       config.middleware = [config.middleware];
     } else {
       config.middleware = [];
     }
-
-    config.middleware.push({
-      route: '',
-      handle: serveIndex(DOCUMENT_ROOT, {
-        icons: true,
-        stylesheet: 'public/style.css',
-        template: 'public/directory.html'
-      }),
-      id: 'Browsersync Server Directory Middleware'
-    });
   }
+
+  config.middleware.push(serveIndexMiddleWare);
 
   return config;
 }
