@@ -110,7 +110,7 @@ function startServer() {
       bs.reload(file);
       console.log(
         '%s %s: %s',
-        new Date().toJSON(),
+        new Date().toISOString().slice(11, -1),
         ('         ' + event).slice(-9),
         relativePath
       );
