@@ -44,7 +44,7 @@ function getConfig() {
     {
       server: {
         baseDir: DOCUMENT_ROOT,
-        directory: true
+        directory: false
       },
       port: port,
       open: false,
