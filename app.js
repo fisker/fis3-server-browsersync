@@ -60,7 +60,7 @@ function getConfig() {
       open: false,
       snippetOptions: {
         rule: {
-          match: /<\/body>/i,
+          match: /<\/body>|<!--\s*browser-sync-script\s*-->/i,
           fn: function (snippet, match) {
             return snippet + match;
           }
