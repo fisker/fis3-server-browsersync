@@ -1,6 +1,6 @@
 {
   "name": "fis3-server-browsersync",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "a browser sync server for fis3.",
   "main": "index.js",
   "repository": {
@@ -20,7 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.18.13",
-    "serve-directory": "^1.0.4"
+    "serve-directory": "^1.0.4",
+    "object.assign": "^4.0.4"
   },
   "bugs": {
     "url": "https://github.com/fisker/fis3-server-browsersync/issues"

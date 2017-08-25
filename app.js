@@ -12,6 +12,7 @@ var serveDirectory = require('serve-directory');
 var bs = require('browser-sync').create();
 var bsUtils = bs.instance.utils;
 var bsDefaultConfig = require(path.join(path.dirname(require.resolve('browser-sync')),'./lib/default-config.js'));
+var assign = Object.assign || require('object.assign');
 
 function getUserConfig(path) {
   try {
@@ -57,7 +58,7 @@ var serveIndexMiddleWare = {
 };
 
 function getConfig() {
-  var config = Object.assign(
+  var config = assign(
     {},
     bsDefaultConfig,
     {
