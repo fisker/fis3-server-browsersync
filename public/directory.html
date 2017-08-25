@@ -7,11 +7,47 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,shrink-to-fit=no,minimal-ui">
   <meta name="format-detection" content="telephone=no,email=no,address=no,date=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>Index of {directory}</title>
-  <style>{style}</style>
+  <title>Index of <%- directory%></title>
+  <style><%= options.style %>.file__icon_directory{background-image:<%= options.icons.directory %>}.file__icon_file{background-image:<%= options.icons.file %>}</style>
 </head>
 <body>
-  <h1 class="path"><a href="/">~</a>{linked-path}</h1>
-  {files}
+  <h1 class="path">Index of <%- directory%></h1>
+  <table class="files">
+    <tbody>
+    <% if (directory !== '/') { %>
+      <tr class="files__item file">
+        <td class="file__icon"></td>
+        <td class="parent__name" colspan="3"><a class="file__link" href="../" title="Parent Directory">&lt;Parent Directory&gt;</a></td>
+      </tr>
+    <% } %>
+
+    <%
+    files
+      .filter(function(file) {
+        return file.name.slice(0, 1) !== '.';
+      })
+      .forEach(function(file) {
+        if (file.stat.isDirectory()) {
+        %>
+          <tr class="files__item file">
+            <td class="file__icon file__icon_directory"></td>
+            <td class="file__name" colspan="3"><a class="file__link" href="<%= encodeURIComponent(file.name) %>/" title="<%- file.name%>"><%- file.name %></a></td>
+          </tr>
+        <%
+        } else {
+        %>
+          <tr class="files__item file">
+            <td class="file__icon file__icon_file"></td>
+            <td class="file__name"><a class="file__link" href="<%= encodeURIComponent(file.name) %>" title="<%- file.name %>"><%- file.name %></a></td>
+            <td class="file__size"><%- file.stat.size %></td>
+            <td class="file__mtime"><%- file.stat.mtime.toISOString() %></td>
+          </tr>
+        <%
+        }
+      })
+      ;
+    %>
+    </tbody>
+  </table>
 </body>
 </html>

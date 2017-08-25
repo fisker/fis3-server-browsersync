@@ -2,119 +2,83 @@ $color-border: #eaecef;
 $color-base: #24292e;
 $color-muted: #6a737d;
 $color-hover: #f6f8fa;
-$color-link-hover: #0366d6;
+$color-link: #0366d6;
 $color-striped: #f2f2f2;
 
 body {
   background: #fff;
   color: $color-base;
   line-height: 1.5;
+  font-size: 14px;
 }
 
-hr {
+svg {
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.seperator {
   height: 0;
   border: 0;
   border-bottom: 1px solid $color-border;
 }
 
 a {
+  color: $color-link;
   text-decoration: none;
   -ms-touch-action: manipulation;
       touch-action: manipulation;
-}
-
-h1 {
-  a {
-    color: $color-base;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-ul {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-  border: 1px solid $color-border;
-  font-size: 14px;
-}
-
-li {
-  &:nth-child(odd) {
-    background: $color-striped;
-  }
 
   &:hover {
-    background: $color-hover;
-  }
-
-  & + & {
-    border-top: 1px solid $color-border;
-  }
-
-  a {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    padding: 5px 0;
-
-    &:hover .name {
-      text-decoration: underline;
-      color: $color-link-hover;
-    }
+    text-decoration: underline;
   }
 }
 
-
-.icon .name {
-  background-repeat: no-repeat;
-  background-position: 5px 3px;
-  padding-left: 26px;
-}
-
-
-.name,
-.size,
-.date {
-  display: table-cell;
-  padding: 0 5px;
-  color: $color-base;
-}
-
-.size,
-.date {
-  text-align: right;
-  white-space: nowrap;
+.files {
+  width: 100%;
   color: $color-muted;
+  border-collapse: collapse;
+
+  &__item {
+    border: 1px solid $color-border;
+  }
+
+  td {
+    padding: 6px 3px;
+  }
 }
 
-.size {
-  width: 90px;
-}
+.file {
+  &__icon {
+    width: 16px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 
-.date {
-  width: 150px;
-  text-align: right;
+  &__name {
+
+  }
+  
+  &__size {
+    width: 125px;
+    text-align: right;
+  }
+  
+  &__mtime {
+    width: 220px;
+    text-align: right;
+  }
 }
 
 @media (max-width: 768px) {
-  body {
-    margin: 0;
-  }
-
-  li a {
-    display: block;
-  }
-
-  .name {
-    display: block;
-  }
-
-  .size,
-  .date {
+  .file__size,
+  .file__mtime {
     display: none;
+  }
+
+  .file__link {
+    display: block;
   }
 }
 

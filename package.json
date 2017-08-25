@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.18.13",
-    "serve-index": "^1.9.0"
+    "serve-directory": "^1.0.4"
   },
   "bugs": {
     "url": "https://github.com/fisker/fis3-server-browsersync/issues"
