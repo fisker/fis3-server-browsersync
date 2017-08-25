@@ -26,7 +26,6 @@ var userConfigFile = path.resolve(
 );
 
 var serveDirectoryStyle = fs.readFileSync(path.join(__dirname, './public/style.css'), 'utf-8');
-var serveDirectoryTemplate = fs.readFileSync(path.join(__dirname, './public/directory.html'), 'utf-8');
 
 var iconColor = '#6a737d';
 var icons = {
@@ -50,7 +49,7 @@ icons.file = makeSvg(icons.file);
 var serveIndexMiddleWare = {
   route: '',
   handle: serveDirectory(DOCUMENT_ROOT, {
-    template: serveDirectoryTemplate,
+    template: './public/directory.html',
     style: serveDirectoryStyle,
     icons: icons
   }),
