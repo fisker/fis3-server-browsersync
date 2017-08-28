@@ -36,11 +36,14 @@ a {
   }
 }
 
+.wrapper {
+  max-width: 900px;
+}
+
 .files {
   width: 100%;
   color: $color-muted;
   border-collapse: collapse;
-  max-width: 900px;
 
   &__item {
     border: 1px solid $color-border;
