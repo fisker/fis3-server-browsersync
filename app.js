@@ -17,7 +17,7 @@ function now() {
 
   str += '.' + ('00' + d.getMilliseconds()).slice(-3);
   return str;
-};
+}
 
 
 function startServer() {
