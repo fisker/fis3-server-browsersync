@@ -87,6 +87,10 @@ a {
 }
 
 @media (max-width: 768px) {
+  .file__name {
+    padding-right: 10px;
+  }
+
   .file__size,
   .file__mtime {
     display: none;
