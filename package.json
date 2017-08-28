@@ -20,8 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.18.13",
-    "serve-directory": "^1.1.0",
-    "object.assign": "^4.0.4"
+    "lodash.merge": "^4.6.0",
+    "serve-directory": "^1.1.0"
   },
   "bugs": {
     "url": "https://github.com/fisker/fis3-server-browsersync/issues"
