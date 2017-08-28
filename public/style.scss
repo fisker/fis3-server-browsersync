@@ -57,7 +57,7 @@ a {
   &__name,
   &__size,
   &__mtime {
-    padding: 6px 3px;
+    padding: 6px 10px;
     vertical-align: top;
   }
 
@@ -66,31 +66,27 @@ a {
     text-align: center;
     background-repeat: no-repeat;
     background-position: center 9px;
-    padding-left: 10px;
     padding-right: 2px;
   }
 
   &__name {
-
+    padding-left: 3px;
   }
 
   &__size {
-    width: 125px;
+    width: 100px;
     text-align: right;
+    white-space: nowrap;
   }
 
   &__mtime {
-    width: 220px;
+    width: 180px;
     text-align: right;
-    padding-right: 10px;
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 768px) {
-  .file__name {
-    padding-right: 10px;
-  }
-
   .file__size,
   .file__mtime {
     display: none;
