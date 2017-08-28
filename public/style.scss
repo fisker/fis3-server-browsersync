@@ -19,11 +19,11 @@ svg {
   vertical-align: text-bottom;
 }
 
-.seperator {
-  height: 0;
-  border: 0;
-  border-bottom: 1px solid $color-border;
-}
+// .seperator {
+//   height: 0;
+//   border: 0;
+//   border-bottom: 1px solid $color-border;
+// }
 
 a {
   color: $color-link;
@@ -40,6 +40,7 @@ a {
   width: 100%;
   color: $color-muted;
   border-collapse: collapse;
+  max-width: 900px;
 
   &__item {
     border: 1px solid $color-border;
@@ -72,12 +73,12 @@ a {
   &__name {
 
   }
-  
+
   &__size {
     width: 125px;
     text-align: right;
   }
-  
+
   &__mtime {
     width: 220px;
     text-align: right;
