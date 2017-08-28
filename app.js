@@ -6,6 +6,19 @@ var DOCUMENT_ROOT = path.resolve(
 var bs = require('browser-sync').create();
 var getBsConfig = require('./lib/browser-sync-config.js');
 
+function now() {
+  var d = new Date();
+  var str;
+  str = [
+    d.getHours(),
+    d.getMinutes(),
+    d.getSeconds()
+  ].join(':').replace(/\b\d\b/g, '0$&');
+
+  str += '.' + ('00' + d.getMilliseconds()).slice(-3);
+  return str;
+};
+
 
 function startServer() {
   var bsConfig = getBsConfig(DOCUMENT_ROOT);
@@ -29,7 +42,7 @@ function startServer() {
       bs.reload(file);
       console.log(
         '%s %s: %s',
-        new Date().toISOString().slice(11, -1),
+        now(),
         ('         ' + event).slice(-9),
         relativePath
       );
