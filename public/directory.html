@@ -44,9 +44,13 @@
             </tr>
           <%
           } else {
+            var fileType = 'file'
+            if (/(?:image|video|audio)\/*/.test(file.type)) {
+              fileType = 'media'
+            }
           %>
             <tr class="files__item file">
-              <td class="file__icon file__icon_file"></td>
+              <td class="file__icon file__icon_<%= fileType %>"></td>
               <td class="file__name"><a class="file__link" href="<%= encodeURIComponent(file.name) %>" title="<%- file.name %>"><%- file.name %></a></td>
               <td class="file__size"><%= options.filesize(file.stat.size) %></td>
               <td class="file__mtime"><time datetime="<%= file.stat.mtime.toISOString() %>"><%= file.stat.mtime.toLocaleString() %></time></td>
