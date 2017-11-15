@@ -1,6 +1,6 @@
 {
   "name": "fis3-server-browsersync",
-  "version": "1.3.12",
+  "version": "1.3.13",
   "description": "a browser sync server for fis3.",
   "main": "index.js",
   "repository": {
@@ -20,12 +20,28 @@
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.18.13",
-    "filesize": "^3.5.10",
+    "filesize": "^3.5.11",
     "lodash.merge": "^4.6.0",
     "serve-directory": "^1.2.1"
+  },
+  "scripts": {
+    "test": "eslint index.js && eslint app.js && eslint lib/*.js",
+    "build": "node-sass --output-style compressed public/style.scss > public/style.css",
+    "publish": "npm --registry=https://registry.npmjs.org/ publish",
+    "release": "npm run build && npm run test && npm run publish"
   },
   "bugs": {
     "url": "https://github.com/fisker/fis3-server-browsersync/issues"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "public/*",
+    "lib/*"
+  ],
+  "devDependencies": {
+    "node-sass": "^4.6.1"
+  }
 }
